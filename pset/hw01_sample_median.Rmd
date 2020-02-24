@@ -1,0 +1,35 @@
+---
+title: "hw01_sample_median"
+author: "Jing Zhang"
+date: "2/24/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+### create a vector which store results from 5000 simulations.
+```{r}
+X.median = numeric(5000)
+```
+### set up sample size for each simulation and set up the value we want to store from each simulation. in this case, we want to store the median from each simulation.
+```{r}
+n = 99 #sample size of each simulation
+m = 50 #median = 50th
+```
+### run 5000 times of simulation where each simulation contains samples from 99 iid N(0,1)
+```{r}
+for (i in 1: 5000){
+  s = rnorm(n,0,1)
+  X.median[i] = sort(s)[m]
+}
+```
+### calculate mean and s.d. from the simulation
+```{r}
+mean(X.median)
+sd(X.median)
+```
+
+## histogram of the mean from 5000 simulations.
+```{r pressure}
+hist(X.median)
+```
